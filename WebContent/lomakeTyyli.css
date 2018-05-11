@@ -1,0 +1,436 @@
+/* yhteiset tyylit*/
+@import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
+html {
+	background-color: rgba(244, 217, 217, 0.71);
+    
+  font-family: 'Montserrat', Arial, sans-serif;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+    background-color: white;
+    font-family: 'Open Sans Condensed', sans-serif;
+    color: black
+    
+  
+}
+
+body {
+	text-align: center;
+    -moz-hyphens: auto;
+    -ms-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto
+}
+
+header {
+    text-align: center;
+}
+
+h1 {
+    color: black;
+    font-size: 280%;
+    line-height: 1.0em;
+    letter-spacing: 10px
+}
+
+
+h2 {
+  color: #474544;
+  font-size: 130%;
+  
+  letter-spacing: 7px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+
+h3 {
+  color: #474544;
+  font-size: 100%;
+  
+  letter-spacing: 4px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+th{
+	font-size: 20px;
+	font-weight: bolder;
+    color: #2c2b29;
+    aling:left;
+    padding-right: 20px;
+    padding-left:20px;
+    
+  
+}	
+
+td{
+	font-size: 20px;
+  	font-weight: 400;
+    color: #474544;
+    aling:left;
+     padding-right: 20px;
+    padding-left:20px;
+}
+
+tr{
+	text-aling:left;
+}
+
+table{
+	display: inline-block;
+	border: solid 2px #474544;
+  max-width: 600px;
+  margin: 20px auto;
+  position: relative;
+  
+}
+#linkki {
+    color: #474544;
+    background-color: transparent;
+    text-decoration: none;
+}
+
+
+nav a {
+    color: black;
+    text-decoration: none;
+    text-align: center;
+    margin: auto;
+    font-size: 100%;
+}
+
+nav {
+    border-top: 4px double #cccccc;
+    border-bottom: 4px double #cccccc;
+    max-width: 1200px;
+    margin: auto;
+}
+.alinSolu{
+	 padding-bottom: 30px;
+}
+.aktiivinen {
+    font-weight: bolder;
+    font-size: 100%;
+}
+
+
+button, input, select, textarea {
+  color: #5a5a5a;
+  font: inherit;
+  margin: 0;
+}
+
+input {
+  line-height: normal;
+    text-align: center;
+}
+
+textarea {
+  overflow: auto;
+}
+
+#container {
+  border: solid 2px #474544;
+  max-width: 550px;
+  margin: 50px auto;
+  position: relative;
+  text-align: center;
+  
+}
+
+form {
+  padding: 17.5px;
+  margin: 20px 0;
+}
+
+
+input[type='text'], select, textarea {
+	background: none;
+  border: none;
+	border-bottom: solid 2px #474544;
+	color: #474544;
+	font-size: 1.000em;
+  font-weight: 400;
+  letter-spacing: 1px;
+	margin: 0em 0 1.875em 0;
+	padding: 0 0 0.875em 0;
+  text-transform: uppercase;
+	width: 100%;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	-o-box-sizing: border-box;
+	box-sizing: border-box;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	-ms-transition: all 0.3s;
+	-o-transition: all 0.3s;
+	transition: all 0.3s;
+}
+
+select{
+	text-align: center;
+}
+input[type='text']:focus, select,textarea:focus {
+	outline: none;
+	padding: 0 0 0.875em 0;
+}
+
+.message {
+	float: none;
+}
+
+.name {
+	float: left;
+	width: 45%;
+}
+
+
+
+
+textarea {
+	line-height: 150%;
+	height: 150px;
+	resize: none;
+    width: 100%;
+}
+
+::-webkit-input-placeholder {
+	color: #474544;
+}
+
+:-moz-placeholder { 
+	color: #474544;
+	opacity: 1;
+}
+
+::-moz-placeholder {
+	color: #474544;
+	opacity: 1;
+}
+
+:-ms-input-placeholder {
+	color: #474544;
+}
+
+#form_button {
+  background: none;
+  border: solid 2px #474544;
+  color: #454744;
+  cursor: pointer;
+  display: inline-block;
+  font-family: 'Montserrat', Arial, sans-serif;
+  font-size: 0.775em;
+  font-weight: bold;
+  outline: none;
+  padding: 10px 10px;
+  text-transform: uppercase;
+  -webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	-ms-transition: all 0.3s;
+	-o-transition: all 0.3s;
+	transition: all 0.3s;
+}
+
+#form_button:hover {
+  background: #647e3b;
+  color: #F2F3EB;
+}
+
+#poisto {
+	padding-left:20px;
+  background: none;
+  border: solid 2px #474544;
+  color: #454744;
+  cursor: pointer;
+   display: inline-block;
+   
+  font-family: 'Montserrat', Arial, sans-serif;
+  font-size: 0.675em;
+  font-weight: bold;
+  outline: none;
+  padding: 5px 5px;
+  text-transform: uppercase;
+  
+}
+
+#poisto:hover {
+  background: #647e3b;
+  color: #F2F3EB;
+}
+
+
+
+#alaosa {
+    text-align: center;
+    font-size: 80%;
+    border-top: 4px double #cccccc;
+}
+
+ .kuva {
+    width: 100%;
+    max-width: 800px;
+    display: block;
+    margin: auto;
+    border-radius: 0px;
+    padding-bottom: 2px;
+    padding-top: 2px
+}
+
+ /* section palstat */
+    .palstat {
+        display: flex;
+    }
+    .palsta {
+        flex: 1px;
+        padding: 8px;
+        text-align: left;
+    }
+
+@media screen and (min-width:1124px) {
+  #container {
+    margin: 20px auto;
+    width: 95%;
+  }
+    
+     body {
+        max-width: 900px;
+        margin: 10px auto;
+        border: solid 3px #474544;
+        padding: 20px;
+    }
+    nav ul {
+        padding: 0px;
+    }
+    nav li {
+        display: inline-block;
+        padding-left: 40px;
+        padding-right: 40px;
+        margin: auto;
+    }
+    nav li {
+        list-style-type: none;
+    }
+    header nav {
+        text-align: center;
+        
+    }
+}
+
+
+@media screen and (min-width: 481px) {
+  #container {
+    margin: 20px auto;
+    width: 95%;
+  }
+    
+   body {
+        width: 80%;
+        margin: 10px auto;
+        border: solid 2px;
+        color: black;
+        padding: 20px;
+    }
+    nav ul {
+        padding: 0px;
+    }
+    nav li {
+        display: inline-block;
+        padding-left: 25px;
+        padding-right: 25px;
+        margin: auto;
+    }
+    nav li {
+        list-style-type: none;
+    }
+    header nav {
+        text-align: center;
+    }
+    nav a {
+   
+    font-size: 95%;
+}
+    .aktiivinen {
+    font-weight: bolder;
+    font-size: 95%;
+}
+}
+
+@media screen and (max-width: 480px) {
+  
+  
+  .underline {
+    width: 68px;
+  }
+  
+  #form_button {
+    padding: 15px 25px;
+  }
+     body {
+        width: 80%;
+        margin: 10px auto;
+         border: solid 3px #474544;
+        padding: 20px;
+    }
+    nav ul {
+        padding: 0px
+    }
+    nav li {
+        display: block;
+        margin: auto;
+        padding-bottom: 10px;
+    }
+    nav li {
+        list-style-type: none;
+    }
+    header nav {
+        text-align: center;
+        
+    }
+}
+
+@media screen and (max-width:360px) {
+body {
+        width: 80%;
+        margin: 10px auto;
+        border: solid 3px #474544;
+        padding: 20px;
+    }
+   
+  
+  .icon {
+    height: 35px;
+    width: 35px;
+  }
+  
+  .underline {
+    width: 53px;
+  }
+  
+  input[type='text'], [type='email'], select, textarea {
+    font-size: 0.875em;
+  }
+    
+     nav ul {
+        padding: 0px
+    }
+    nav li {
+        display: block;
+        margin: auto;
+        padding-bottom: 10px;
+    }
+    nav li {
+        list-style-type: none;
+    }
+    header nav {
+        text-align: center;
+       
+    }
+    nav a {
+    font-size: 
+    }
+}
+
