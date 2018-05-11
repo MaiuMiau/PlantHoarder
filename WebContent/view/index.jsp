@@ -33,7 +33,7 @@
             </ul>
         </nav>
     </header>
-<h3>Plant Hoarder on sivusto jolla voit lisätä viherkasveja kokoelmaasi </h3>
+<h3>Plant Hoarder on nettisivu jolla voit lisätä viherkasveja kokoelmaasi </h3>
 <h3>sekä tallentaa kasvien hoito-ohjeet </h3>
     <section id="Kotisivu">
         <img class="kuva" src="view\hertta2.jpg" alt="kasvikuva">
