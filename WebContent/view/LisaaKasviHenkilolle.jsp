@@ -78,9 +78,7 @@
 
 			<input type="submit" name="submit-button" class="submit-button"
 				value="Lisää" id="form_button" />
-			<div class="button" id="form_button">
-				<a id="linkki" href="etusivu">Peruuta</a>
-			</div>
+			<div class="button" id="form_button"><a id="linkki" href="etusivu">Peruuta</a></div>
 
 		</form>
 	</div>
