@@ -59,6 +59,7 @@ package kasvi.model;
 				this.sukuNimi = sukuNimi;
 			}
 
+			
 			public String getKayttajaTunnus() {
 				return kayttajaTunnus;
 			}

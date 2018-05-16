@@ -37,9 +37,12 @@ public class PoistaKasviServlet extends HttpServlet {
 			// Haetaan lomakkeella syötetyn henkilon tiedot request-oliolta
 			String idStr = request.getParameter("id");
 			int kasviId = new Integer(idStr);
-
+			
 			System.out.println(kasviId);
 
+			
+			
+			
 			// Luodaan henkilodao
 			KasviDAO kasvidao = new KasviDAO();
 			// poistetaan kavin toedot tietokannasta
@@ -48,9 +51,12 @@ public class PoistaKasviServlet extends HttpServlet {
 			// TODO: muuta virheilmoitus
 			System.out.println("Sovelluksessa tapahtui virhe " + e.getMessage());
 		}
-
-		// uudelleenohjataan selain henkilolista-sivulle
-		response.sendRedirect("etusivu");
+		String idHenkStr = request.getParameter("henkiloId");
+		int henkiloId = new Integer(idHenkStr);
+		System.out.println(henkiloId);
+		
+		
+		response.sendRedirect("henkilon-kasvit?henkiloId=" + henkiloId);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)

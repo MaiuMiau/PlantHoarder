@@ -1,6 +1,7 @@
 package kasvi.control;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.SQLException;
 
 import javax.servlet.RequestDispatcher;
@@ -34,29 +35,39 @@ public class LisaaHenkiloServlet extends HttpServlet {
 			throws ServletException, IOException {
 
 		try {
+			
+			
 			String kayttajaTunnus = request.getParameter("kayttajaTunnus");
-
 			String etuNimi = request.getParameter("etuNimi");
-
 			String sukuNimi = request.getParameter("sukuNimi");
+			
+			if ((kayttajaTunnus.length()>30) || (etuNimi.length()>30) || (sukuNimi.length()>30)){
+				
+				PrintWriter writer = response.getWriter();
+				writer.println("<html><body>");
+				writer.println("<h1>Väärän pituinen syöte! MAXpituus30</h1>");
+				writer.println("</body></html>");
+			}
+			else if ((kayttajaTunnus.length()<30) || (etuNimi.length()<30) || (sukuNimi.length()<30) ){
+				// Luodaan uusi henkiloOlio edellisillä parametreillä
+				Henkilo henkilo = new Henkilo(kayttajaTunnus, etuNimi, sukuNimi);
 
-			// Luodaan uusi henkiloOlio edellisillä parametreillä
-			Henkilo henkilo = new Henkilo(kayttajaTunnus, etuNimi, sukuNimi);
-
-			// Luodaan khenkilodao
-			HenkiloDAO henkilodao = new HenkiloDAO();
-
-			// Lisätään henkilon tiedot tietokantaan
-			henkilodao.addHenkilo(henkilo);
-			request.setAttribute("henkilo", henkilo);
-
+				// Luodaan khenkilodao
+				HenkiloDAO henkilodao = new HenkiloDAO();
+				// Lisätään henkilon tiedot tietokantaan
+				henkilodao.addHenkilo(henkilo);
+				request.setAttribute("henkilo", henkilo);
+				
+				// uudelleenohjataan selain kasvilista-sivulle
+				response.sendRedirect("etusivu");
+			}
+			
 		} catch (SQLException e) {
 			// TODO: muuta virheilmoitus
 			System.out.println("Sovelluksessa tapahtui virhe " + e.getMessage());
 		}
 
-		// uudelleenohjataan selain kasvilista-sivulle
-		response.sendRedirect("etusivu");
+		
 	}
 
 }
