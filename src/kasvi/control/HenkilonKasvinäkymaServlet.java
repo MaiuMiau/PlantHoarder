@@ -26,9 +26,10 @@ public class HenkilonKasvinäkymaServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+		
+		//etsitään tietokannasta kaikki henkilön kasvit ja välitetään tiedot jsp:lle
+		
 		// Haetaan lomakkeella syötetyn henkiloId:n tiedot request-oliolta
-
 		String stringHenkiloId = request.getParameter("henkiloId");
 		int henkiloId = new Integer(stringHenkiloId);
 

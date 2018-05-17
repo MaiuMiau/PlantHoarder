@@ -43,13 +43,19 @@
 
 
 			<h3>Valitse profiili:</h3>
-			<select name="henkiloId">
+			
+			<select name="henkiloId" id= "select" > 
+			
 				<c:forEach items="${henkilot}" var="henkilo">
 
 					<option value="<c:out value='${henkilo.id}'/>"><c:out
 							value='${henkilo.etuNimi} ${henkilo.sukuNimi},  Käyttäjätunnus:  ${henkilo.kayttajaTunnus}' /></option>
 				</c:forEach>
-			</select> <input type="submit" value="Näytä" id="form_button" />
+			
+			</select> <br> <br>
+			
+			<input type="submit"name="submit-button" class="form_button" value="Näytä" id="form_button" />
+			<div class="button" id="form_button"><a id="linkki" href="etusivu">Peruuta</a></div>
 
 
 

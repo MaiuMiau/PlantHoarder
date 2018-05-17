@@ -64,31 +64,14 @@ public class UusiKasviHenkilolleServlet extends HttpServlet {
 			// Lis‰t‰‰n kasvin tiedot tietokantaan
 			kasvidao.addKasvi(kasvi);
 
-			List<Kasvi> kasvit = kasvidao.findKasvitByHenkiloId(henkiloId);
-
-			// Talletetaan request-olion alle kasvilista, jotta tiedot ovat
-			// k‰ytˆss‰ jsp:ll‰
-			request.setAttribute("kasvit", kasvit);
-
-			System.out.println(kasvit);
-
-			// luodaan henkiloDao-olio
-			HenkiloDAO henkiloDao = new HenkiloDAO();
-
-			// etsit‰‰n henkilotietokannasta henkilo jonka id on parametrina
-			// saatu henkilo id
-			Henkilo henkilo = henkiloDao.findByhenkiloId(henkiloId);
-
-			request.setAttribute("henkilo", henkilo);
-
-			String jsp = "/view/HenkilonKasvin‰kym‰.jsp";
-			RequestDispatcher dispather = getServletContext().getRequestDispatcher(jsp);
-			dispather.forward(request, response);
+			
+			//v‰litet‰‰n henkiloId parametrina henkilon-kasvit servletille jotta sivu avautuu uudestaan p‰ivitetyn‰
+			response.sendRedirect("henkilon-kasvit?henkiloId=" + henkiloId);
 
 			System.out.println(henkiloId);
 
 		} catch (SQLException e) {
-			// TODO: muuta virheilmoitus
+			
 			System.out.println("Sovelluksessa tapahtui virhe " + e.getMessage());
 		}
 

@@ -48,7 +48,7 @@
 	<table >
 
 		<tr>
-			<th align="left" width=200>id</th>
+			<th align="left" width=200>id numero</th>
 			<th align="left" width=200>Käyttäjätunnus</th>
 			<th align="left" width=200>Etunimi</th>
 			<th align="left" width=200>Sukunimi</th>

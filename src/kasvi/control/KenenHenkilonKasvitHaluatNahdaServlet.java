@@ -27,11 +27,13 @@ public class KenenHenkilonKasvitHaluatNahdaServlet extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		//  profiilin-valintalistaan vaihtoehdot tietokannasta
+		//   haetaan jsp:n profiilin-valintalistaan vaihtoehdot tietokannasta
 		HenkiloDAO henkilodao = new HenkiloDAO();
 		List<Henkilo> henkilot = henkilodao.findAll();
 		
+		// Talletetaan request-olion alle kasvilista, jotta tiedot ovat käytössä jsp:llä
 		request.setAttribute("henkilot", henkilot);
+		
 		// ohjaa sivulle jossa valitaan profiilin perustella kenen kasvit näytetään
 		String jsp = "/view/KenenHenkilonKasvitNaytetaan.jsp";
 		RequestDispatcher dispather = getServletContext().getRequestDispatcher(

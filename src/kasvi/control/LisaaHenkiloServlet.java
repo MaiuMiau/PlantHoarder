@@ -25,7 +25,7 @@ public class LisaaHenkiloServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+		// lähetä selaimelta tullut pyyntö servletiltä edelleen jsp:lle
 		String jsp = "/view/henkilolomake.jsp";
 		RequestDispatcher dispather = getServletContext().getRequestDispatcher(jsp);
 		dispather.forward(request, response);
@@ -35,7 +35,7 @@ public class LisaaHenkiloServlet extends HttpServlet {
 			throws ServletException, IOException {
 
 		try {
-			
+			// Haetaan lomakkeella syötetyn henkilon tiedot request-oliolta
 			
 			String kayttajaTunnus = request.getParameter("kayttajaTunnus");
 			String etuNimi = request.getParameter("etuNimi");
@@ -51,19 +51,29 @@ public class LisaaHenkiloServlet extends HttpServlet {
 			else if ((kayttajaTunnus.length()<30) || (etuNimi.length()<30) || (sukuNimi.length()<30) ){
 				// Luodaan uusi henkiloOlio edellisillä parametreillä
 				Henkilo henkilo = new Henkilo(kayttajaTunnus, etuNimi, sukuNimi);
-
+				
+				
+				
 				// Luodaan khenkilodao
 				HenkiloDAO henkilodao = new HenkiloDAO();
+				
 				// Lisätään henkilon tiedot tietokantaan
 				henkilodao.addHenkilo(henkilo);
+				
+				// Talletetaan request-olion alle henkilo, jotta tiedot ovat käytössä jsp:llä
 				request.setAttribute("henkilo", henkilo);
 				
-				// uudelleenohjataan selain kasvilista-sivulle
-				response.sendRedirect("etusivu");
+				// ohjaa sivulle jossa näytetään lisätyn profiilin tiedot 
+				String jsp = "/view/ProfiiliNakyma.jsp";
+				RequestDispatcher dispather = getServletContext().getRequestDispatcher(
+						jsp);
+				dispather.forward(request, response);
+				
+				
 			}
 			
 		} catch (SQLException e) {
-			// TODO: muuta virheilmoitus
+			
 			System.out.println("Sovelluksessa tapahtui virhe " + e.getMessage());
 		}
 

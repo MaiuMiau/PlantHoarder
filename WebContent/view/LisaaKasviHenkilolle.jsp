@@ -40,10 +40,11 @@
 		<form action="#" method="post" id="contact_form">
 
 
-
+	<%-- hakee pudotusvalikkoon kaikki profiilit joista käyttäjä voi valita omansa --%>
+		<%-- valinnasta välittyy eteenpäin henkiloId --%>
 
 			<h3>Valitse profiili:</h3>
-			<select name="henkiloId">
+			<select name="henkiloId" id= "select">
 				<c:forEach items="${henkilot}" var="henkilo">
 
 					<option value="<c:out value='${henkilo.id}'/>"><c:out
@@ -52,33 +53,35 @@
 			</select> <br> <br>
 
 
-
+<%-- syötteille on määritelty maksimipituus joka vastaa tietokantaan määriteltyä maksimipituutta --%>
 
 
 			<div>
-				<label for="nimi"></label> <input type="text"
+				<label for="nimi"></label> <input type="text" maxlength="30"
 					placeholder="Kasvin nimi" name="nimi" required>
 			</div>
 
 			<div>
-				<label for="kuvaus"></label> <input type="text"
+				<label for="kuvaus"></label> <input type="text" maxlength="200"
 					placeholder="Kuvaus kasvista" name="kuvaus" required>
 			</div>
 
 			<div>
-				<label for="kastelu"></label> <input type="text"
+				<label for="kastelu"></label> <input type="text" maxlength="30"
 					placeholder="Kasteluohje" name="kastelu" required>
 			</div>
 
 			<div>
-				<label for="valo"></label> <input type="text"
+				<label for="valo"></label> <input type="text" maxlength="30"
 					placeholder="Valon tarve" name="valo" required>
 			</div>
 
 
 			<input type="submit" name="submit-button" class="submit-button"
-				value="Lisää" id="form_button" />
+				value="Lisää" id="form_button" /> <%-- painike lisää kasvin ja siirtyy sivulle jossa listataan kaikki henkilonksavit--%>
 			<div class="button" id="form_button"><a id="linkki" href="etusivu">Peruuta</a></div>
+
+
 
 		</form>
 	</div>

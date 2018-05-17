@@ -43,14 +43,19 @@
 
 
 		<h3>Valitse profiili:</h3>
-		<select name="henkiloId">
+		<%-- hakee pudotusvalikkoon kaikki profiilit joista käyttäjä voi valita omansa --%>
+		<%-- valinnasta välittyy eteenpäin henkiloId --%>
+		<select name="henkiloId" id= "select">
 			<c:forEach items="${henkilot}" var="henkilo">
 
 				<option value="<c:out value='${henkilo.id}'/>"><c:out
 						value='${henkilo.etuNimi} ${henkilo.sukuNimi},  Käyttäjätunnus:  ${henkilo.kayttajaTunnus}' /></option>
 			</c:forEach>
-		</select> <input type="submit" value="Näytä" id="form_button"/>
-
+		</select><br> <br>
+		<div class="submit">
+		 <input type="submit" value="Näytä" id="form_button"/><%-- painike välittää henkiloId.n ja näyttää kysesisen henkilon kasvit--%>
+		 <div class="button" id="form_button"><a id="linkki" href="etusivu">Peruuta</a></div>
+		</div>
 
 
 	</form>

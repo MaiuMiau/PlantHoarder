@@ -45,45 +45,49 @@
 
 
 	<div id="container">
-
+<%-- syötteille on määritelty maksimipituus, joka vastaa tietokantaan määriteltyä maksimipituutta --%>
 
 
 		<form action="#" method="post" id="contact_form">
 
 			<div>
 				<label for="kasviId"></label> <input value="${kasvi.id}"
-					type="hidden" name="kasviId" readonly>
+					type="hidden" name="kasviId" >
+					<%-- kasviId ei ole käyttäjän muokattavissa --%>
 			</div>
 
 			<div>
-				<label for="nimi"></label> <input type="text"
+				<label for="nimi"></label> <input type="text" maxlength="30"
 					placeholder="Kasvin nimi" name="nimi" required>
 			</div>
 
 			<div>
-				<label for="kuvaus"></label> <input type="text"
+				<label for="kuvaus"></label> <input type="text" maxlength="200"
 					placeholder="Kuvaus kasvista" name="kuvaus" required>
 			</div>
 
 			<div>
-				<label for="kastelu"></label> <input type="text"
+				<label for="kastelu"></label> <input type="text" maxlength="30"
 					placeholder="Kasteluohje" name="kastelu" required>
 			</div>
 
 			<div>
-				<label for="valo"></label> <input type="text"
+				<label for="valo"></label> <input type="text" maxlength="30"
 					placeholder="Valon tarve" name="valo" required>
 			</div>
 			<div>
+			
 				<label for="henkiloId"></label> <input value="${kasvi.henkiloId}"
-					type="hidden" name="henkiloId" readonly>
+					type="hidden" name="henkiloId">
+					<%-- henkiloId ei ole käyttäjän muokattavissa --%>
 			</div>
 
 
 
-			<div class="submit">
-				<input type="submit" value="Päivitä" id="form_button" />
-			</div>
+			
+				<input type="submit" value="Päivitä" id="form_button" /><%-- painike päivittää kasvin tiedot ja siirtyy sivulle jossa listataan kaikki henkilonksavit--%>
+			
+			<div class="button" id="form_button"><a id="linkki" href="etusivu">Peruuta</a></div>
 		</form>
 		<!-- // End form -->
 	</div>

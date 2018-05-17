@@ -24,20 +24,23 @@ public class MuokkaaProfiilinTietojaServlet extends HttpServlet {
 
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		// muokkaa painikkeen mukana parametrina jsp:ltä tuleva henkiloId
 		String idStr = request.getParameter("id");
 		int henkiloId = new Integer(idStr);
 
-		System.out.println(henkiloId);
+		System.out.println(henkiloId);// testi
+		
 		// henkilon muokkaus formiin tiedot tietokannasta
 		HenkiloDAO henkilodao = new HenkiloDAO();
 		Henkilo henkilo = henkilodao.findByhenkiloId(henkiloId);
-
+		
+		// Talletetaan request-olion alle henkilo, jotta tiedot ovat käytössä jsp:llä
 		request.setAttribute("henkilo", henkilo);
 
-		System.out.println(henkilo);
+		System.out.println(henkilo);// testi
 
-		// ohjaa sivulle jossa valitaan profiilin perustella kenen kasvit
-		// näytetään
+		// ohjaa sivulle jossa muokataan profiilin tietoja lomakkeella
 		String jsp = "/view/MuokkaaProfiilinTietoja.jsp";
 		RequestDispatcher dispather = getServletContext().getRequestDispatcher(jsp);
 		dispather.forward(request, response);
@@ -45,7 +48,9 @@ public class MuokkaaProfiilinTietojaServlet extends HttpServlet {
 
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String stringId = request.getParameter("henkiloId");
+		
+		// Haetaan lomakkeella syötetyt päivitetyt tiedot request-oliolta
+		String stringId = request.getParameter("Id"); // henkiloId ei ole käyttäjän muutettavissa vaan on formissa piiloettuna
 		int Id = new Integer(stringId);
 		
 		String kayttajaTunnus = request.getParameter("kayttajaTunnus");
@@ -60,11 +65,11 @@ public class MuokkaaProfiilinTietojaServlet extends HttpServlet {
 		// Luodaan henkilodao
 		HenkiloDAO henkilodao = new HenkiloDAO();
 		
-		// Muokataan henkilon tietoja lomakkeella anettujen syötteiden mukaan
+		// Päivitetään henkilon tiedot lomakkeella anettujen tietojen mukaan
 		henkilodao.updateById(henkilo);
 
-		// uudelleenohjataan selain etusivulle
-		response.sendRedirect("etusivu");
+		// uudelleenohjataan Profiilin tiedot sivuille jossa näkyvät nyt päivitetyt tiedot
+		response.sendRedirect("profiilin-tiedot?henkiloId=" + Id);
 	}
 
 }

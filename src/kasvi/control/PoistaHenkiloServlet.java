@@ -25,7 +25,8 @@ public class PoistaHenkiloServlet extends HttpServlet {
 			throws ServletException, IOException {
 
 		try {
-			// Haetaan lomakkeella syötetyn henkilon tiedot request-oliolta
+			// poistetaan poista painikkeen mukana parametrina tuleen henkiloid:n perusteella kaikki henkilon kasvit
+			// kasvit joissa on viiteavaimena henkiloId pitää poistaa ennen kuin henkilo voidaan poistaa
 			String idStr = request.getParameter("id");
 			int henkiloId = new Integer(idStr);
 			// Luodaan kasvidao
@@ -33,12 +34,12 @@ public class PoistaHenkiloServlet extends HttpServlet {
 			// Lisätään kasvin tiedot tietokantaan
 			kasvidao.removeKasviByHenkiloId(henkiloId);
 		} catch (SQLException e) {
-			// TODO: muuta virheilmoitus
+			
 			System.out.println("Sovelluksessa tapahtui virhe " + e.getMessage());
 		}
 
 		try {
-			// Haetaan lomakkeella syötetyn henkilon tiedot request-oliolta
+			// poistetaan poista painikkeen mukana parametrina tuleen henkiloid:n perusteella henkilo
 			String idStr = request.getParameter("id");
 			int henkiloId = new Integer(idStr);
 			// Luodaan henkilodao
@@ -46,11 +47,11 @@ public class PoistaHenkiloServlet extends HttpServlet {
 			// Lisätään henkilön tiedot tietokantaan
 			henkilodao.removeHenkilo(henkiloId);
 		} catch (SQLException e) {
-			// TODO: muuta virheilmoitus
+			
 			System.out.println("Sovelluksessa tapahtui virhe " + e.getMessage());
 		}
 
-		// uudelleenohjataan selain henkilolista-sivulle
+		// uudelleenohjataan selain etusivulle
 		response.sendRedirect("etusivu");
 	}
 

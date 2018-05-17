@@ -23,7 +23,7 @@ public class ProfiilinTiedotServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// Haetaan lomakkeella syötetyn henkiloId:n tiedot request-oliolta
+		// Haetaan henkiloId request-oliolta
 
 		String stringHenkiloId = request.getParameter("henkiloId");
 		int henkiloId = new Integer(stringHenkiloId);
@@ -34,7 +34,8 @@ public class ProfiilinTiedotServlet extends HttpServlet {
 		// etsitään henkilotietokannasta henkilo jonka id on parametrina saatu
 		// henkilo id
 		Henkilo henkilo = henkiloDao.findByhenkiloId(henkiloId);
-
+		
+		
 		request.setAttribute("henkilo", henkilo);
 
 		// lähetä selaimelta tullut pyyntö servletiltä edelleen jsp:lle

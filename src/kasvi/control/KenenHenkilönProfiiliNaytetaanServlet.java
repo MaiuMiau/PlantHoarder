@@ -26,12 +26,15 @@ public class KenenHenkilönProfiiliNaytetaanServlet extends HttpServlet {
 
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		/// kasvilomakkeen henkilo-valintalistaan vaihtoehdot tietokannasta
+		
+		// haetaan jsp:n profiilin-valintalistaan vaihtoehdot tietokannasta
 		HenkiloDAO henkilodao = new HenkiloDAO();
 		List<Henkilo> henkilot = henkilodao.findAll();
 		
+		// Talletetaan request-olion alle henkilo, jotta tiedot ovat käytössä jsp:llä
 		request.setAttribute("henkilot", henkilot);
 		
+		// ohjaa sivulle jossa valitaan profiilin perustella kenen profiilin tiedot näytetään
 		String jsp = "/view/KenenHenkilonProfiiliNaytetaan.jsp";
 		RequestDispatcher dispather = getServletContext().getRequestDispatcher(
 				jsp);
@@ -40,7 +43,7 @@ public class KenenHenkilönProfiiliNaytetaanServlet extends HttpServlet {
 
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		
 		doGet(request, response);
 	}
 

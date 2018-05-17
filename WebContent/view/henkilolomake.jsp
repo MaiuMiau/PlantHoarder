@@ -41,28 +41,30 @@
 	<div id="container">
 
 
-
+		<%-- syötteille on  määritelty maksimipituus joka vastaa tietokantaan määriteltyä maksimipituutta --%>
 		<form action="#" method="post" id="contact_form">
 
 			<div>
-				<label for="kayttajaTunnus"></label> <input type="text"
-					placeholder="Käyttäjätunnus" name="kayttajaTunnus" required>
+				<label for="kayttajaTunnus"></label> <input type="text" maxlength="30"
+					placeholder="Anna uniikki käyttäjätunnus esim. sähköposti" name="kayttajaTunnus" required>
 			</div>
 
 			<div>
-				<label for="etuNimi"></label> <input type="text"
+				<label for="etuNimi"></label> <input type="text" maxlength="30"
 					placeholder="Etunimi" name="etuNimi" required>
 			</div>
 
 			<div>
-				<label for="sukuNimi"></label> <input type="text"
+				<label for="sukuNimi"></label> <input type="text" maxlength="30"
 					placeholder="Sukunimi" name="sukuNimi" required>
 			</div>
 
 
-			<div class="submit">
+			
 				<input type="submit" value="Luo profiili" id="form_button" />
-			</div>
+				<%-- painike lisää profiilin ja siirtyy sivulle jossa näkyvät profiilin tiedot--%>
+			
+			<div class="button" id="form_button"><a id="linkki" href="etusivu">Peruuta</a></div>
 		</form>
 		<!-- // End form -->
 	</div>

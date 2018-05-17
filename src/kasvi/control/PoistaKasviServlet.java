@@ -15,14 +15,7 @@ import kasvisto.model.dao.KasviDAO;
 public class PoistaKasviServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	/**
-	 * Vastaanottaa selaimelta tulleen kasvin poistopyynnön
-	 * 
-	 * @param request
-	 *            pyyntö
-	 * @param response
-	 *            vastaus
-	 */
+	
 
 	public PoistaKasviServlet() {
 		super();
@@ -34,28 +27,27 @@ public class PoistaKasviServlet extends HttpServlet {
 
 		try {
 
-			// Haetaan lomakkeella syötetyn henkilon tiedot request-oliolta
+			// poistetaan kasvi poista painikkeen mukana parametrina tuleen kasviId:n perusteella
 			String idStr = request.getParameter("id");
 			int kasviId = new Integer(idStr);
 			
-			System.out.println(kasviId);
+			System.out.println(kasviId); //testi
 
-			
-			
-			
-			// Luodaan henkilodao
+			// Luodaan kasvidao
 			KasviDAO kasvidao = new KasviDAO();
-			// poistetaan kavin toedot tietokannasta
+			// poistetaan kavin toedot tietokannasta kasviId:n perusteella
 			kasvidao.removeKasvi(kasviId);
 		} catch (SQLException e) {
-			// TODO: muuta virheilmoitus
+			
 			System.out.println("Sovelluksessa tapahtui virhe " + e.getMessage());
 		}
+		// poista painikkeen mukana parametrina tulee myös henkiloId jotta voidaan käyttää sitä sivun uudelleen ohjauksessa
 		String idHenkStr = request.getParameter("henkiloId");
 		int henkiloId = new Integer(idHenkStr);
-		System.out.println(henkiloId);
 		
+		System.out.println(henkiloId);// testi
 		
+		//välitetään henkiloId parametrina henkilon-kasvit servletille jotta sivu avautuu uudestaan päivitetynä
 		response.sendRedirect("henkilon-kasvit?henkiloId=" + henkiloId);
 	}
 

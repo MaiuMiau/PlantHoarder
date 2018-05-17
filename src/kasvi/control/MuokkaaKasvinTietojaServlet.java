@@ -1,8 +1,6 @@
 package kasvi.control;
 
 import java.io.IOException;
-import java.util.List;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,9 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import kasvi.model.Henkilo;
 import kasvi.model.Kasvi;
-import kasvisto.model.dao.HenkiloDAO;
 import kasvisto.model.dao.KasviDAO;
 
 @WebServlet("/muokkaa-kasvin-tietoja")
@@ -26,21 +22,23 @@ public class MuokkaaKasvinTietojaServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+		
+		// muokkaa painikkeen mukana parametrina jsp:ltä tuleva kasviId
 		String idStr = request.getParameter("id");
 		int KasviId = new Integer(idStr);
 
-		System.out.println(KasviId);
+		System.out.println(KasviId);// testi
+		
 		// Kasvin muokkaus formiin tiedot tietokannasta
 		KasviDAO kasvidao = new KasviDAO();
 		Kasvi kasvi = kasvidao.findByKasviId(KasviId);
-
+	
+		// Talletetaan request-olion alle kasvi, jotta tiedot ovat käytössä jsp:llä
 		request.setAttribute("kasvi", kasvi);
 
 		System.out.println(kasvi);
 
-		// ohjaa sivulle jossa valitaan profiilin perustella kenen kasvit
-		// näytetään
+		// ohjaa sivulle jossa kasvin tietoja muokataan fromilla
 		String jsp = "/view/MuokkaaKasvinTietoja.jsp";
 		RequestDispatcher dispather = getServletContext().getRequestDispatcher(jsp);
 		dispather.forward(request, response);
@@ -48,8 +46,10 @@ public class MuokkaaKasvinTietojaServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
-		String stringId = request.getParameter("kasviId");
+		
+	// haetaan lomakkeella syötetyt  muokatut tiedot
+	
+		String stringId = request.getParameter("kasviId");//kasvin Id ei ole käyttäjän muokattavissa
 		int kasviId = new Integer(stringId);
 
 		String nimi = request.getParameter("nimi"); // nimi
@@ -60,41 +60,26 @@ public class MuokkaaKasvinTietojaServlet extends HttpServlet {
 
 		String valo = request.getParameter("valo"); // valo
 
-		String stringHenkiloId = request.getParameter("henkiloId");
+		String stringHenkiloId = request.getParameter("henkiloId"); //henkiloId ei ole käyttäjän muokattavissa
 		int henkiloId = new Integer(stringHenkiloId);
 
 		// Luodaan uusi KasviOlio edellisillä parametreillä
 		Kasvi kasvi = new Kasvi(kasviId, nimi, kuvaus, kastelu, valo, henkiloId);
 
-		System.out.println(kasvi);// testi osoittaa että kasvit siirtyvät mutta
-									// en osaa tehdä updatea Daossa
+		System.out.println(kasvi);// testi onnistuuko uuden kasviOlion luonti
 
 		// Luodaan dao-olio
 		KasviDAO kasvidao = new KasviDAO();
-		// Lisätään kasvin tiedot tietokantaan
+		
+		// päivitetään uudet tiedot kasvista tiedot tietokantaan
 		kasvidao.updateByKasviId(kasvi);
+		
+		//välitetään henkiloId parametrina henkilon-kasvit servletille jotta sivu avautuu uudestaan päivitetynä
+		response.sendRedirect("henkilon-kasvit?henkiloId=" + henkiloId);
 
-		List<Kasvi> kasvit = kasvidao.findKasvitByHenkiloId(henkiloId);
-
-		// Talletetaan request-olion alle kasvilista, jotta tiedot ovat käytössä
-		// jsp:llä
-		request.setAttribute("kasvit", kasvit);
-
-		// luodaan henkiloDao-olio
-		HenkiloDAO henkiloDao = new HenkiloDAO();
-
-		// etsitään henkilotietokannasta henkilo jonka id on parametrina saatu
-		// henkilo id
-		Henkilo henkilo = henkiloDao.findByhenkiloId(henkiloId);
-
-		request.setAttribute("henkilo", henkilo);
-
-		String jsp = "/view/HenkilonKasvinäkymä.jsp";
-		RequestDispatcher dispather = getServletContext().getRequestDispatcher(jsp);
-		dispather.forward(request, response);
-
-		System.out.println(henkiloId);
+	
+		}	
 
 	}
 
-}
+
