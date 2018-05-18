@@ -72,39 +72,7 @@ public class HenkiloDAO extends DataAccessObject {
 		return henkilo;
 	}
 	
-	// haetaan yksi henkilo tietokannasta henkiloId-arvon perusteella
-		public Henkilo findBykayttajaTunnus(String kayttajaTunnus) {
-			Connection conn = null;
-			PreparedStatement stmt = null;
-			ResultSet rs = null;
-
-			Henkilo henkilo = null;
-			try {
-				// Luodaan yhteys
-				conn = getConnection();
-
-				// Luodaan komento: haetaan kaikki rivit kurssitaulusta
-				String sqlSelect = "SELECT id, kayttajaTunnus, etuNimi, sukuNimi FROM henkilo WHERE kayttajaTunnus = ?";
-
-				// Valmistellaan komento:
-				stmt = conn.prepareStatement(sqlSelect);
-				stmt.setString(1, kayttajaTunnus);
-
-				// L‰hetet‰‰n komento:
-				rs = stmt.executeQuery();
-
-				// K‰yd‰‰n tulostaulun rivit l‰pi ja luetaan read()-metodilla:
-				if (rs.next()) {
-					henkilo = readHenkilo(rs);
-				}
-			} catch (SQLException e) {
-				throw new RuntimeException(e);
-			} finally {
-				close(rs, stmt, conn); // Suljetaan
-			}
-
-			return henkilo;
-		}
+	
 	
 	// haetaan yksi henkilo tietokannasta  Id-arvon perusteella ja
 		// p‰ivitet‰‰n tiedot
