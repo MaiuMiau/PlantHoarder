@@ -46,11 +46,13 @@
 	<h3>Et ole lis‰nnyt viel‰ yht‰‰n kasvia!</h3> 
 	<h3>T‰st‰ p‰‰set lis‰‰m‰‰n kasvin profiiliisi</h3>
 	<br>
+	<div class="submit">
 		<div class="button" id="form_button"><a id="linkki" href="uusi-kasvi-henkilolle">Lis‰‰ kasvi</a></div> 
 			<div class="button" id="form_button"><a id="linkki" href="etusivu">Peruuta</a></div>
+			</div>
 			<br>
 			<br>
-			<br>
+		
 	</div>
 
 

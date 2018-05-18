@@ -60,5 +60,8 @@
 
 	</form>
 </div><!-- // End #container -->
+ <footer id="alaosa">
+        <p id="tiedot"> Plant Hoarder </p>
+    </footer>
 </body>
 </html>
