@@ -41,7 +41,7 @@
 		&bull;
 	</h2>
 	<h2>&bull;Tässä kaikki kasvisi&bull;</h2>
-
+	<h2><c:out value="${viesti}" /></h2>
 
 <%-- tulostaa kaikkien kasvien tiedot --%>
 	<c:forEach items="${kasvit}" var="kasvi">

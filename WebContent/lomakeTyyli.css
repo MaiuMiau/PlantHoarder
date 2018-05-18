@@ -2,7 +2,7 @@
 @import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
 html {
 	background-color: rgba(244, 217, 217, 0.71);
-    background: url("view/hertta4.jpg") repeat;
+    background: url("view/tausta5.png"), repeat;
   font-family: 'Montserrat', Arial, sans-serif;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;

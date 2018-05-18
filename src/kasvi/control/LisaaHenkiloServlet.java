@@ -41,15 +41,7 @@ public class LisaaHenkiloServlet extends HttpServlet {
 			String etuNimi = request.getParameter("etuNimi");
 			String sukuNimi = request.getParameter("sukuNimi");
 			
-			if ((kayttajaTunnus.length()>30) || (etuNimi.length()>30) || (sukuNimi.length()>30)){
-				
-				PrintWriter writer = response.getWriter();
-				writer.println("<html><body>");
-				writer.println("<h1>Väärän pituinen syöte! MAXpituus30</h1>");
-				writer.println("</body></html>");
-			}
-			else if ((kayttajaTunnus.length()<30) || (etuNimi.length()<30) || (sukuNimi.length()<30) ){
-				// Luodaan uusi henkiloOlio edellisillä parametreillä
+			
 				Henkilo henkilo = new Henkilo(kayttajaTunnus, etuNimi, sukuNimi);
 				
 				
@@ -70,7 +62,7 @@ public class LisaaHenkiloServlet extends HttpServlet {
 				dispather.forward(request, response);
 				
 				
-			}
+			
 			
 		} catch (SQLException e) {
 			

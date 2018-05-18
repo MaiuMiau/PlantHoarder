@@ -33,19 +33,6 @@ public class HenkilonKasvinäkymaServlet extends HttpServlet {
 		String stringHenkiloId = request.getParameter("henkiloId");
 		int henkiloId = new Integer(stringHenkiloId);
 
-		// Luodaan kasvidao-olio
-		KasviDAO kasvidao = new KasviDAO();
-		
-		// etsitään kasvitietokannasta kasvit joidenka viiteavaimena on
-		// parametrina saatu henkiloId
-		List<Kasvi> kasvit = kasvidao.findKasvitByHenkiloId(henkiloId);
-
-		// Talletetaan request-olion alle kasvilista, jotta tiedot ovat käytössä
-		// jsp:llä
-		request.setAttribute("kasvit", kasvit);
-		
-		System.out.println(kasvit);// testitulostus
-		
 		//luodaan henkiloDao-olio
 		HenkiloDAO henkiloDao = new HenkiloDAO();
 		
@@ -53,12 +40,38 @@ public class HenkilonKasvinäkymaServlet extends HttpServlet {
 		Henkilo henkilo = henkiloDao.findByhenkiloId(henkiloId);
 		
 		request.setAttribute("henkilo", henkilo);
+		// Luodaan kasvidao-olio
+		KasviDAO kasvidao = new KasviDAO();
 		
-		// lähetä selaimelta tullut pyyntö servletiltä edelleen jsp:lle
-		String jsp = "/view/HenkilonKasvinäkymä.jsp";
-		RequestDispatcher dispather = getServletContext().getRequestDispatcher(jsp);
-		dispather.forward(request, response);
-
+		// etsitään kasvitietokannasta kasvit joidenka viiteavaimena on
+		// parametrina saatu henkiloId
+		List<Kasvi> kasvit = kasvidao.findKasvitByHenkiloId(henkiloId);
+		System.out.println(kasvit);
+		
+		if( kasvit.isEmpty()){ // jos henkilolla ei ole yhtään kasvia
+			
+		
+			
+			String jsp = "/view/EiNaytettavaa.jsp";
+			RequestDispatcher dispather = getServletContext().getRequestDispatcher(jsp);
+			dispather.forward(request, response);
+		
+		
+		}else if(kasvit != null){ // jos henkilöllä on kasveja
+			
+			// Talletetaan request-olion alle kasvilista, jotta tiedot ovat käytössä
+			// jsp:llä
+			request.setAttribute("kasvit", kasvit);
+			
+			System.out.println(kasvit);// testitulostus
+			
+			
+			
+			// lähetä selaimelta tullut pyyntö servletiltä edelleen jsp:lle
+			String jsp = "/view/HenkilonKasvinäkymä.jsp";
+			RequestDispatcher dispather = getServletContext().getRequestDispatcher(jsp);
+			dispather.forward(request, response);
+		}
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)

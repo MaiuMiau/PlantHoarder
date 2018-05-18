@@ -206,7 +206,7 @@ public class KasviDAO extends DataAccessObject {
 		return kasvi;
 	}
 
-	// haetaan yksi kasvi tietokannasta kasvin Id-arvon perusteella
+	// haetaan yksi kasvi tietokannasta kasvin Id-arvon perusteella 
 	public Kasvi findByKasviId(int KasviId) {
 		Connection conn = null;
 		PreparedStatement stmt = null;
