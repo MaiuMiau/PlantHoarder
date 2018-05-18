@@ -41,9 +41,11 @@
 		&bull;
 	</h2>
 	<h2>&bull;Tässä kaikki kasvisi&bull;</h2>
-	<h2><c:out value="${viesti}" /></h2>
+	<h2>
+		<c:out value="${viesti}" />
+	</h2>
 
-<%-- tulostaa kaikkien kasvien tiedot --%>
+	<%-- tulostaa kaikkien kasvien tiedot --%>
 	<c:forEach items="${kasvit}" var="kasvi">
 		<table>
 
@@ -79,11 +81,11 @@
 
 			<tr>
 				<td align="left" class="alinSolu"></td>
-				
+
 				<%-- poistaa kasvin kasvinIdn perusteella --%>
 				<td align="left" id="poisto"><a id="linkki"
 					href="poista-kasvi?id=<c:out value='${kasvi.id}' />&henkiloId=<c:out value='${henkilo.id}' />">Poista</a></td>
-				
+
 				<%-- siirtyy muokkaamaan kasvia kasvinIdn perusteella --%>
 				<td align="left" id="poisto"><a id="linkki"
 					href="muokkaa-kasvin-tietoja?id=<c:out value='${kasvi.id}' />">Muokkaa</a></td>
@@ -94,15 +96,6 @@
 		</table>
 
 	</c:forEach>
-
-
-
-
-
-
-
-
-
 
 
 
